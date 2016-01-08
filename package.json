@@ -1,0 +1,33 @@
+{
+  "name": "node-inspectweb",
+  "version": "1.0.0",
+  "description": "Allows you to inspect a JSON value on your browser",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yamadapc/node-inspectweb.git"
+  },
+  "keywords": [
+    "debug",
+    "json",
+    "web",
+    "express",
+    "interface",
+    "ui",
+    "development"
+  ],
+  "author": "Pedro Tacla Yamada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yamadapc/node-inspectweb/issues"
+  },
+  "homepage": "https://github.com/yamadapc/node-inspectweb#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "open": "0.0.5"
+  }
+}
