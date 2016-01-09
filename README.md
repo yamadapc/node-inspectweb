@@ -7,13 +7,13 @@ Allows you to inspect a JSON value on an UI in your browser. Uses
 
 ## Install
 ```
-$ npm i --save webinspect
+$ npm i --save inspectweb
 ```
 
 ## Usage
 ```javascript
-var webinspect = require('webinspect');
-webinspect({
+var inspectweb = require('inspectweb');
+inspectweb({
   lots: {
     of: [
       {
@@ -25,6 +25,20 @@ webinspect({
   open: true,
 });
 ```
+
+## Implementation
+When first called, `inspectweb` will:
+
+- Spawn an express server
+- Hash the object provided and store it in a shared object
+
+_(This will leak memory, but you probably don't care)_
+
+On subsequent calls, it'll hash the object, check if it exists in memory and
+store it.
+
+If you tell `inspectweb` to open a browser, it'll open pages relative to the
+objects you want to inspect.
 
 ## License
 This code is published under the MIT license.
