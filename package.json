@@ -1,6 +1,6 @@
 {
   "name": "inspectweb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Allows you to inspect a JSON value on your browser",
   "main": "lib/index.js",
   "scripts": {
