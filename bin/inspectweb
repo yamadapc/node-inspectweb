@@ -23,8 +23,7 @@ function main(data, meta) {
         return;
       }
 
-      console.error('Started at', url);
-
+      console.log('Started at', url);
       if (!isOne && !opened) {
         opened = true;
         openBrowser(url.replace(/\/[^/]+$/, ''));
@@ -35,12 +34,14 @@ function main(data, meta) {
 
 if (args.length) {
   var data = args.map(function(a) {
+    console.log('Reading', a)
     var as = fs.readFileSync(a).toString();
     return JSON.parse(as);
   });
 
   main(data, args);
 } else {
+  console.log('Reading STDIN')
   var data = '';
   process.stdin.on('data', function(d) {
     data += d.toString();
