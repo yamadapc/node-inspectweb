@@ -10,6 +10,13 @@ Allows you to inspect a JSON value on an UI in your browser. Uses
 $ npm i --save inspectweb
 ```
 
+## Command-line Usage
+```
+npm install -g inspectweb
+inspectweb package.json something.json
+curl http://respondswithjson.com | inspectweb
+```
+
 ## Usage
 ```javascript
 var inspectweb = require('inspectweb');
