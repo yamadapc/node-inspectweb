@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+var fs = require('fs');
+var inspectweb = require('..');
+var openBrowser = require('open');
+
+var args = process.argv.slice(2);
+var isPipe = false;
+
+function main(data, meta) {
+  if (!meta) meta = [];
+  var isOne = data.length === 1;
+  var opened = false;
+  data.forEach(function(d, i) {
+    inspectweb(d, {
+      open: isOne,
+      meta: {
+        name: meta[i],
+      },
+    }, function(err, url) {
+      if (err) {
+        console.error(err.message);
+        process.exit(1);
+        return;
+      }
+
+      console.error('Started at', url);
+
+      if (!isOne && !opened) {
+        opened = true;
+        openBrowser(url.replace(/\/[^/]+$/, ''));
+      }
+    });
+  });
+}
+
+if (args.length) {
+  var data = args.map(function(a) {
+    var as = fs.readFileSync(a).toString();
+    return JSON.parse(as);
+  });
+
+  main(data, args);
+} else {
+  var data = '';
+  process.stdin.on('data', function(d) {
+    data += d.toString();
+  });
+
+  process.stdin.on('end', function() {
+    main([JSON.parse(data)]);
+  });
+}
