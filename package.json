@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "description": "Allows you to inspect a JSON value on your browser",
   "main": "lib/index.js",
+  "bin": "bin/inspectweb",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
