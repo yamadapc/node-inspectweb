@@ -12,9 +12,9 @@ $ npm i --save inspectweb
 
 ## Command-line Usage
 ```
-npm install -g inspectweb
-inspectweb package.json something.json
-curl http://respondswithjson.com | inspectweb
+$ npm install -g inspectweb
+$ inspectweb package.json something.json
+$ curl http://respondswithjson.com | inspectweb
 ```
 
 ## Usage
