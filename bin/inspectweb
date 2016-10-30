@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 var fs = require('fs');
-var inspectweb = require('..');
 var openBrowser = require('open');
+var path = require('path');
+var yaml = require('js-yaml');
+
+var inspectweb = require('..');
 
 var args = process.argv.slice(2);
 var isPipe = false;
@@ -36,9 +39,15 @@ if (args.length) {
   var data = args.map(function(a) {
     console.log('Reading', a)
     var as = fs.readFileSync(a).toString();
+    var ext = path.extname(a);
+    console.log(ext);
+    if (ext && ['.yml', '.yaml'].indexOf(ext) > -1) {
+      return yaml.load(as);
+    }
     return JSON.parse(as);
   });
 
+  console.log(data);
   main(data, args);
 } else {
   console.log('Reading STDIN')
